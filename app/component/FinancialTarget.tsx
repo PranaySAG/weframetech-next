@@ -57,7 +57,7 @@ const FinancialTarget: React.FC = () => {
       </div>
 
       
-      <div className="mt-6 bg-[#F6F7FB] rounded-1 p-4 h-[162px] w-[268px]">
+      <div className="mt-6 bg-[#F6F7FB] rounded-1 p-4 h-[162px] w-full">
         <h3 className="text-[14px] font-semibold text-black mb-2">
           Steps Completed
         </h3>
