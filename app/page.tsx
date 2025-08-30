@@ -47,7 +47,7 @@ export default function Home() {
       </div>
       <div className="flex flex-col flex-1">
         <Navbar />
-        <div className="p-6 flex bg-[#EAECF0] w-[1128px] h-[586px] gap-5">
+        <div className="p-6 flex bg-[#EAECF0] w-[1192px] h-[586px] gap-5">
           <FinancialTarget />
           <DashboardCards />
           <InsightsAndLeads/>
