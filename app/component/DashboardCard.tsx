@@ -11,7 +11,7 @@ const DashboardCards: React.FC = () => {
   const users = [UserImg, UserImg2, UserImg3, UserImg4, UserImg5];
 
   return (
-    <div className="max-w-md mx-auto space-y-4 h-[284px] w-[386px]">
+    <div className="max-w-md mx-auto space-y-4 h-[284px] w-[400px]">
       <div className="bg-white rounded-2xl shadow p-5 border">
         <div className="flex justify-between items-center">
           <h2 className="font-semibold text-gray-700">
@@ -73,7 +73,7 @@ const DashboardCards: React.FC = () => {
         </div>
       </div>
 
-      <div className="bg-white rounded-2xl shadow p-5 h-[284px] w-[386px] border">
+      <div className="bg-white rounded-2xl shadow p-5 h-[284px] w-[400px] border">
         <h2 className="font-semibold text-black">Financial Wellbeing</h2>
 
         <div className="flex justify-between items-center mt-3">

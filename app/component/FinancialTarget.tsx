@@ -23,7 +23,7 @@ const FinancialTarget: React.FC = () => {
   const progress = 85;
 
   return (
-    <div className="h-[538px] w-[316px] bg-white rounded-2xl shadow p-6 ">
+    <div className="h-[538px] w-[380px] bg-white rounded-2xl shadow p-6 ">
       <div className="flex flex-col items-center">
         <div className="relative w-32 h-32">
           <svg className="w-full h-full -rotate-90">

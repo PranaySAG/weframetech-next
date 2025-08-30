@@ -7,7 +7,7 @@ import TopPerfromer from "../../public/assets/image 14.png"
 
 const InsightsAndLeads: React.FC = () => {
   return (
-    <div className="h-[282px] w-[386px] max-w-md mx-auto space-y-4">
+    <div className="h-[282px] w-[400px] max-w-md mx-auto space-y-4">
       <div className="bg-white rounded-2xl shadow p-5">
         <h2 className="font-semibold text-black mb-3">
           Key Insights & Feedback
@@ -49,7 +49,7 @@ const InsightsAndLeads: React.FC = () => {
               key={i}
               className="flex items-center justify-between bg-gray-50 p-3 rounded-xl"
             >
-              <div className="flex items-center gap-3 h-[40px] w-[338px]">
+              <div className="flex items-center gap-3 h-[40px] w-[400px]">
                 {lead.type === "image" && (
                   <Image
                     src={lead.img}

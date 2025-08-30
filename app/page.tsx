@@ -51,7 +51,7 @@ export default function Home() {
           </button>
           <Navbar />
         </div>
-        <div className="p-6 grid bg-[#EAECF0] grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 flex-1">
+        <div className="p-6 grid bg-[#EAECF0] grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 flex-1 ">
           <FinancialTarget />
           <DashboardCards />
           <InsightsAndLeads />
