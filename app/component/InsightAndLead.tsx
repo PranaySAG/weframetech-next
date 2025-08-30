@@ -1,5 +1,9 @@
 import React from "react";
 import Image from "next/image";
+import User1 from "../../public/assets/Avatar (6).png"
+import User2 from "../../public/assets/Avatar (7).png"
+import User3 from "../../public/assets/Avatar (8).png"
+import TopPerfromer from "../../public/assets/image 14.png"
 
 const InsightsAndLeads: React.FC = () => {
   return (
@@ -16,7 +20,7 @@ const InsightsAndLeads: React.FC = () => {
           </div>
           <div className="flex flex-col items-center">
             <div className="w-12 h-12 rounded-full bg-gray-100 flex items-center justify-center">
-              🏆
+              <Image src={TopPerfromer} alt=""/>
             </div>
             <span className="mt-1 text-xs bg-blue-50 text-blue-600 px-2 py-0.5 rounded-full">
               Top Performer
@@ -37,22 +41,34 @@ const InsightsAndLeads: React.FC = () => {
 
         <div className="space-y-3  text-black">
           {[
-            { name: "Wade Warren", stage: "Initial Inquiry", img: "/user1.jpg" },
-            { name: "Ava Wright", stage: "Initial Inquiry", img: "/user2.jpg" },
-            { name: "Cody Fisher", stage: "Initial Inquiry", img: "/user3.jpg" },
+            { name: "Wade Warren", stage: "Initial Inquiry", img: User1, type: "image" },
+            { name: "Ava Wright", stage: "Initial Inquiry", img: User2, type: "image" },
+            { name: "Cody Fisher", stage: "Initial Inquiry", img: User3, type: "image" },
           ].map((lead, i) => (
             <div
               key={i}
               className="flex items-center justify-between bg-gray-50 p-3 rounded-xl"
             >
               <div className="flex items-center gap-3 h-[40px] w-[338px]">
-                <Image
-                  src={lead.img}
-                  alt={lead.name}
-                  width={40}
-                  height={40}
-                  className="rounded-full"
-                />
+                {lead.type === "image" && (
+                  <Image
+                    src={lead.img}
+                    alt={lead.name}
+                    width={40}
+                    height={40}
+                    className="rounded-full"
+                  />
+                )}
+                {lead.type === "icon" && (
+                  <div className="w-10 h-10 rounded-full bg-gray-200 flex items-center justify-center">
+                    <span className="text-gray-400">?</span>
+                  </div>
+                )}
+                {lead.type === "none" && (
+                  <div className="w-10 h-10 rounded-full bg-gray-200 flex items-center justify-center">
+                    <span className="text-gray-400">?</span>
+                  </div>
+                )}
                 <span className="font-medium">{lead.name}</span>
               </div>
               <span className="text-sm text-black">
