@@ -73,7 +73,7 @@ const DashboardCards: React.FC = () => {
         </div>
       </div>
 
-      <div className="bg-white rounded-2xl shadow p-5">
+      <div className="bg-white rounded-2xl shadow p-5 h-[284px] w-[386px] border">
         <h2 className="font-semibold text-black">Financial Wellbeing</h2>
 
         <div className="flex justify-between items-center mt-3">

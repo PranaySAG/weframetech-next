@@ -7,6 +7,7 @@ import FinancialTarget from "./component/FinancialTarget";
 import DashboardCards from "./component/DashboardCard";
 import InsightsAndLeads from "./component/InsightAndLead";
 import DocumentTable from "./component/DocumentTable";
+import img1 from '../public/assets/Content.png'
 
 export default function Home() {
   return (
@@ -51,7 +52,15 @@ export default function Home() {
           <DashboardCards />
           <InsightsAndLeads/>
         </div>
-        <DocumentTable />
+        <div className="h-[709px] w-[1192px] px-[32px] max-w-[1280px] gap-[24px] bg-white text-black">
+          <div className="w-[1128px] h-[709px] bg-white/20">
+            <div className="w-[1128px] h-[93px]  flex flex-col justify-between  bg-[#FFFFFF] ">
+              <div className="px-[24px] pt-[20px] h-[72px] w-[1128px] "><Image src={img1} alt="img" className="h-[72px] mb-[7px]  "/> </div>
+              <div className="border-b-[1px] border-[#fcfcfd] mt-[5px]"></div>
+            </div>
+            <DocumentTable />
+          </div>
+        </div>
       </div>
     </div>
   );
