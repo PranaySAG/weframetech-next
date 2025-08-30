@@ -3,9 +3,10 @@
 
 import { useState } from "react";
 import Image from "next/image";
-import img4 from "./../../public/assets/Button.png"
-import PDf from "./../../public/assets/File type icon.png"
-import DOC from "./../../public/assets/File type icon (1).png"
+import img4 from "./../../public/assets/Button.png";
+import PDf from "./../../public/assets/File type icon.png";
+import DOC from "./../../public/assets/File type icon (1).png";
+
 type Stage = "Full" | "Onboarding" | "Franchisee" | "Prospect";
 
 interface DocumentItem {
@@ -63,44 +64,51 @@ export default function DocumentTable() {
   };
 
   return (
-    <div className="p-6 bg-white rounded-xl shadow-sm w-[1128px] h-{616px} border-[1px] border-[#999999]">
-      <div className="flex items-center px-[16px] py-[12px] justify-between h-[68px] ">
-        <div className="relative">
+    <div className="p-4 sm:p-6 bg-white rounded-xl shadow-sm w-full border border-[#999999] overflow-hidden">
+      {/* Top Bar */}
+      <div className="flex flex-col sm:flex-row items-stretch sm:items-center gap-3 justify-between mb-4">
+        <div className="relative w-full sm:w-[320px]">
           <input
             type="text"
             placeholder="     Search here..."
-            className="py-[10px] px-[14px] h-[44px] rounded-lg border-[#999999] w-[320px] text-sm focus:outline-none focus:ring-2 focus:ring-sky-400"
+            className="w-full py-2 px-4 rounded-lg border border-[#999999] text-sm focus:outline-none focus:ring-2 focus:ring-sky-400"
           />
-          <svg className="absolute left-1 top-3  w-5 h-5 text-gray-400" viewBox="0 0 24 24" fill="none" stroke="currentColor">
+          <svg className="absolute left-2 top-2.5 w-5 h-5 text-gray-400" viewBox="0 0 24 24" fill="none" stroke="currentColor">
             <path strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" d="M21 21l-4.35-4.35" />
             <circle cx="11" cy="11" r="6" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" />
           </svg>
         </div>
-        <button className="flex items-center gap-2 border-[#999999] rounded-lg  text-sm h-[40px] hover:bg-gray-50"><Image src={img4} className="h-[40px]" alt="Filter"/></button>
+        <button className="flex items-center justify-center sm:justify-start gap-2 border border-[#999999] rounded-lg px-3 py-2 text-sm h-[40px] hover:bg-gray-50">
+          <Image src={img4} className="h-[24px] w-[24px]" alt="Filter" />
+          <span className="hidden sm:inline">Filter</span>
+        </button>
       </div>
 
-      <div className="overflow-hidden rounded-xl ">
-        <table className="w-full border-collapse border-[#999999] text-sm">
+      {/* Responsive Table */}
+      <div className="overflow-x-auto rounded-lg border border-[#999999]">
+        <table className="min-w-[700px] w-full border-collapse text-sm">
           <thead>
             <tr className="bg-gray-50 text-left text-gray-600 text-sm">
               <th className="p-3 w-12"><input type="checkbox" checked={selectedAll} onChange={toggleSelectAll} /></th>
               <th className="p-3">Document Name</th>
               <th className="p-3">Document Type</th>
-              <th className="p-3">AI App Inclusion</th>
-              <th className="p-3">Dashboard Inclusion</th>
-              <th className="p-3">Stage Access</th>
+              <th className="p-3">AI App</th>
+              <th className="p-3">Dashboard</th>
+              <th className="p-3">Stage</th>
               <th className="p-3 text-right">Actions</th>
             </tr>
           </thead>
           <tbody>
             {documents.map(doc => (
-              <tr key={doc.id} className="border border-[#818181] hover:bg-gray-50">
+              <tr key={doc.id} className="border-t border-[#ddd] hover:bg-gray-50">
                 <td className="p-3"><input type="checkbox" checked={selectedIds.includes(doc.id)} onChange={() => toggleSelect(doc.id)} /></td>
 
-                <td className="p-3 flex items-center gap-3">
-                  <div className="w-8 h-8 flex items-center justify-center rounded bg-gray-100 text-xs font-semibold">{doc.type=="PDF"?<Image src={PDf} alt="pdf"/>:<Image src={DOC} alt="pdf"/>}</div>
+                <td className="p-3 flex items-center gap-3 min-w-[180px]">
+                  <div className="w-8 h-8 flex items-center justify-center rounded bg-gray-100">
+                    {doc.type == "PDF" ? <Image src={PDf} alt="pdf" /> : <Image src={DOC} alt="doc" />}
+                  </div>
                   <div>
-                    <div className="text-gray-800">{doc.name}</div>
+                    <div className="text-gray-800 text-sm font-medium">{doc.name}</div>
                     <div className="text-xs text-gray-400">{doc.size}</div>
                   </div>
                 </td>
@@ -113,7 +121,6 @@ export default function DocumentTable() {
                   <button
                     onClick={() => toggleSwitch(doc.id, "aiApp")}
                     className={`w-10 h-5 rounded-full p-0.5 ${doc.aiApp ? "bg-sky-500" : "bg-gray-300"} transition`}
-                    aria-pressed={doc.aiApp}
                   >
                     <span className={`block w-4 h-4 bg-white rounded-full transform transition ${doc.aiApp ? "translate-x-5" : "translate-x-0"}`} />
                   </button>
@@ -123,14 +130,13 @@ export default function DocumentTable() {
                   <button
                     onClick={() => toggleSwitch(doc.id, "dashboard")}
                     className={`w-10 h-5 rounded-full p-0.5 ${doc.dashboard ? "bg-sky-500" : "bg-gray-300"} transition`}
-                    aria-pressed={doc.dashboard}
                   >
                     <span className={`block w-4 h-4 bg-white rounded-full transform transition ${doc.dashboard ? "translate-x-5" : "translate-x-0"}`} />
                   </button>
                 </td>
 
-                <td className="p-3">
-                  <select value={doc.stage} onChange={(e) => updateStage(doc.id, e.target.value as Stage)} className="border border-[#999999] rounded-lg px-3 py-1 text-sm">
+                <td className="p-3 min-w-[140px]">
+                  <select value={doc.stage} onChange={(e) => updateStage(doc.id, e.target.value as Stage)} className="border border-[#999999] rounded-lg px-2 py-1 text-sm w-full">
                     <option value="Full">Full</option>
                     <option value="Onboarding">Onboarding</option>
                     <option value="Franchisee">Franchisee</option>
@@ -138,10 +144,10 @@ export default function DocumentTable() {
                   </select>
                 </td>
 
-                <td className="p-3 text-right">
-                  <div className="flex justify-end gap-4">
-                    <button onClick={() => handleDelete(doc.id)} className="text-red-500 hover:underline">Delete</button>
-                    <button className="text-sky-600 hover:underline">Edit</button>
+                <td className="p-3 text-right min-w-[120px]">
+                  <div className="flex justify-end gap-3">
+                    <button onClick={() => handleDelete(doc.id)} className="text-red-500 hover:underline text-sm">Delete</button>
+                    <button className="text-sky-600 hover:underline text-sm">Edit</button>
                   </div>
                 </td>
               </tr>
